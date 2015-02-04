@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- resource/cho.pprj results/test.owl http://si.uw.edu/ont/fma.owl -->
+<config>
+	<conv>
+		<owl-path>results/fma/fma.owl</owl-path>
+		<!--  <owl-uri>http://si.uw.edu/fma.owl</owl-uri> -->
+		<owl-uri>http://purl.org/sig/ont/fma</owl-uri>
+		<frames-path>resource/fma/FMA/fma.pprj</frames-path>
+		<conf-path>resource/fma/fma-config.xml</conf-path>
+		
+	</conv>
+</config>

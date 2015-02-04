@@ -1,0 +1,392 @@
+<config>
+	<conf-flags>
+		<disjoint-siblings>true</disjoint-siblings>
+	</conf-flags>
+	
+	<iri project='fma'>
+		<value_source>FMAID</value_source>
+		<value_comp>fma{value}</value_comp>
+		<fragment_separator>/</fragment_separator>
+	</iri>
+
+	<general_conv_args>
+		<slot_annot_exclusion excluded_slots=""/>
+		<reif_exclusion excluded_slots="FMAID"/>
+	</general_conv_args>
+	
+	
+	<slot_conv_classes>
+		<!-- concept names and other reified annotation properties-->
+		<slot_conv_class slot_name="Preferred name" 
+			primary_slot="name" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Synonym" 
+			primary_slot="name" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Non-English equivalent" 
+			primary_slot="name" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="AAL" 
+			primary_slot="AAL ID" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Neurolex" 
+			primary_slot="Neurolex ID" 
+			excluded_slots="reference,FMAID" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Talairach" 
+			primary_slot="Talairach ID" 
+			excluded_slots="reference,FMAID" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+		<slot_conv_class slot_name="DK (Freesurfer)" 
+			primary_slot="Freesurfer ID" 
+			excluded_slots="reference,FMAID" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ReifiedAnnotationPropertyConverter" />
+	
+		
+		<!-- other annotation properties -->
+		<!-- 
+			FMAID
+			author
+			authority
+			modification
+			name
+			date entered/modified
+			TA ID
+			definition
+			modified by
+			UMLS ID
+			outdated meaning
+			other Latin equivalents
+			NN abbreviations
+			reference
+			term status
+			abbreviation
+			language
+			Eponym
+			English equivalent
+			homonym for
+			AAL
+			AAL ID
+			contributing author
+			DK (Freesurfer)
+			Freesurfer ID
+			homonym of
+			Neurolex
+			Neurolex ID
+			RadLex ID
+			Talairach ID
+			CMA label
+			Talairach
+			JHU DTI-81
+			JHU White-Matter Tractography Atlas
+			slot synonym
+		 -->
+		<slot_conv_class slot_name="FMAID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="author"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="authority"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="modification"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="name"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="date entered/modified"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="TA ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="definition"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="modified by"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="UMLS ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="outdated meaning"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="other Latin equivalents"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="NN abbreviations"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="reference"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="term status"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="abbreviation"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="language"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Eponym"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="English equivalent"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="homonym for"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="AAL ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="contributing author"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Freesurfer ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="homonym of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Neurolex ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="RadLex ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="Talairach ID"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="CMA label"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="JHU DTI-81"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="JHU White-Matter Tractography Atlas"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+		<slot_conv_class slot_name="slot synonym"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.AnnotationPropertyConverter" />
+			
+		<!-- slots we don't want -->
+		<!-- 
+			FaceBase Name
+			FaceBase Variable Name
+			FaceBase landmark
+			FaceBase abbreviation
+			transforming agent
+			Gene
+			Gene action
+			has derivation
+			has fate
+			general location
+			shared/unshared
+			anatomical/arbitrary
+			innervation
+			has root
+			has trunk
+			has branch
+			variation
+			attributed tributary
+			cell shape
+			contact type
+			cell surface specialization
+			number of pairs per nucleus
+			ploidy
+			cell connectivity
+			cell layer
+			cardinality
+			has shape type
+			has related dimensional entity
+			Anatomical context
+			attributed bounded by
+			Atlas source 
+			
+			// the following may have been deleted from FMA, they will
+			// be configured here just in case
+			has wall
+			fascicular architecture
+			segmental supply
+			attributed branch
+			clinical part
+			clinical part of
+			NeuroNames Synonym
+			2D part
+			2D part of
+			float value
+			unit
+			value unit
+			elasticity
+			equilibrium potential (mV)
+			concentration (mmol/L)
+			pressure (mmHg)
+			oxygen partial pressure (mmHg)
+			carbon dioxide partial pressure (mmHg)
+			custom partonomy
+			custom partonomy of
+			primary site of
+			primary site
+			Metastatic site of
+			size (mm)
+			systemic part
+			systemic part of
+		-->
+		<slot_conv_class slot_name="FaceBase Name"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="FaceBase Variable Name"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="FaceBase landmark"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="FaceBase abbreviation"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="transforming agent"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="Gene"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="Gene action"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has derivation"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has fate"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="general location"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="shared/unshared"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="anatomical/arbitrary"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="innervation"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has root"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has trunk"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has branch"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="variation"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="attributed tributary"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="cell shape"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="contact type"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="cell surface specialization"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="number of pairs per nucleus"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="ploidy"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="cell connectivity"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="cell layer"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="cardinality"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has shape type"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has related dimensional entity"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="Anatomical context"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="attributed bounded by"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="Atlas source"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="has wall"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="fascicular architecture"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="segmental supply"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="attributed branch"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="clinical part"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="clinical part of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="NeuroNames Synonym"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="2D part"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="2D part of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="float value"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="unit"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="value unit"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="elasticity"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="equilibrium potential (mV)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="concentration (mmol/L)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="pressure (mmHg)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="oxygen partial pressure (mmHg)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="carbon dioxide partial pressure (mmHg)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="custom partonomy"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="custom partonomy of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="primary site of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="primary site"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="Metastatic site of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="size (mm)"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="systemic part"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		<slot_conv_class slot_name="systemic part of"
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.NoopPropertyConverter" />
+		
+		<!-- reified relations with chain -->
+		<slot_conv_class slot_name="attributed part" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ChainReifiedPropertyConverter" 
+			primary_slot="related part" 
+			direct_property_name="direct_part" 
+			excluded_slots="anatomical/arbitrary,shared/unshared,FMAID"/>
+		<slot_conv_class slot_name="attributed regional part" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ChainReifiedPropertyConverter" 
+			primary_slot="related part" 
+			direct_property_name="direct_regional_part" 
+			excluded_slots="anatomical/arbitrary,shared/unshared,FMAID"/>
+		<slot_conv_class slot_name="attributed constitutional part" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.ChainReifiedPropertyConverter" 
+			primary_slot="related part" 
+			direct_property_name="direct_constitutional_part" 
+			excluded_slots="anatomical/arbitrary,shared/unshared,FMAID"/>
+			
+		<!-- splitting reified relations -->
+		<!-- NOTE: map is from slot names to OWL property names -->
+		<slot_conv_class slot_name="has shape" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedPropertyConverter" 
+			property_rename_map="has shape type->has_direct_shape_type,has related dimensional entity->has_direct_related_dimensional_entity" 
+			config_map_delimiter="->" 
+			excluded_slots="FMAID"/>
+		<slot_conv_class slot_name="anatomical morphology" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedPropertyConverter" 
+			property_rename_map="has branch->has_direct_branch,has root->has_direct_root,has trunk->has_direct_trunk" 
+			config_map_delimiter="->" 
+			excluded_slots="FMAID"/>
+		<slot_conv_class slot_name="attributed cell type" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedPropertyConverter" 
+			property_rename_map="cell shape->has_direct_cell_shape,cell surface specialization->has_direct_cell_surface_specialization,contact type->has_direct_contact_type" 
+			config_map_delimiter="->" 
+			excluded_slots="FMAID"/>
+		<slot_conv_class slot_name="chromosome pair number" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedPropertyConverter" 
+			property_rename_map="number of pairs per nucleus->has_direct_number_of_pairs_per_nucleus,ploidy->has_direct_ploidy" 
+			config_map_delimiter="->" 
+			excluded_slots="FMAID"/>
+		<slot_conv_class slot_name="epithelial morphology" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedPropertyConverter" 
+			property_rename_map="cell layer->has_direct_cell_layer,cell shape->has_direct_cell_shape" 
+			config_map_delimiter="->" 
+			excluded_slots="FMAID"/>
+			
+		<!-- splitting reified relations, generating properties from values -->
+		<slot_conv_class slot_name="has adjacency" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedValPropertyConverter" 
+			property_rename_map="related object->direct_adjacent_to" 
+			config_map_delimiter="->"
+			value_to_property_map="anatomical coordinate->resource/attrCoordMap.properties,laterality->resource/attrCoordMap.properties"  
+			value_slot="related object" 
+			excluded_slots="surrounds,surrounded by,adjacent"/>
+		<slot_conv_class slot_name="location" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedValPropertyConverter" 
+			config_map_delimiter="->"
+			value_to_property_map="anatomical coordinate->resource/attrCoordMap.properties,laterality->resource/attrCoordMap.properties"  
+			value_slot="related object" 
+			excluded_slots="surrounds,surrounded by,adjacent"/>
+		<slot_conv_class slot_name="attributed continuous with" 
+			conv_cls_name="edu.uw.sig.frames2owl.slotconv.impl.SplitReifiedValPropertyConverter" 
+			property_rename_map="related object->direct_continuous_with" 
+			config_map_delimiter="->"
+			value_to_property_map="anatomical coordinate->resource/attrCoordMap.properties,laterality->resource/attrCoordMap.properties"  
+			value_slot="related object" 
+			excluded_slots="surrounds,surrounded by,adjacent"/>		
+	</slot_conv_classes>
+</config>
