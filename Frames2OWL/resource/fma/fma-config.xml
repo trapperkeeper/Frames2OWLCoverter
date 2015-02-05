@@ -10,7 +10,7 @@
 	</iri>
 
 	<general_conv_args>
-		<slot_annot_exclusion excluded_slots=""/>
+		<!--  <slot_annot_exclusion excluded_slots=""/> -->
 		<reif_exclusion excluded_slots="FMAID"/>
 	</general_conv_args>
 	
