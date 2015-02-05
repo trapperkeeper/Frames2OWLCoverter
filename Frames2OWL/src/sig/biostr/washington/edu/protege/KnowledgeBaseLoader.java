@@ -10,7 +10,7 @@ import edu.stanford.smi.protege.model.Project;
 /**
  * <p>Title: </p>
  * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2003</p>
+ * <p>Copyright: Copyright (c) 2003, 2015</p>
  * <p>Company: UW SIG</p>
  * @author Todd Detwiler
  * @version 1.0
