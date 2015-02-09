@@ -138,12 +138,6 @@ public class AnnotationPropertyConverter extends BaseSlotValueConverter
 			man.applyChange(addAxiom);
 		}
 		
-		
-		
-		//System.err.println(annotDomainIRI);
-		//System.err.println(annotRangeIRI);
-		
-		
 		return true;
 	}
 	
@@ -300,8 +294,6 @@ public class AnnotationPropertyConverter extends BaseSlotValueConverter
 		ValueType slotValType = framesSlot.getValueType();
 		if(slotValType.equals(ValueType.BOOLEAN))
 		{
-			//OWLAxiom equivAx = df.getOWLEquivalentClassesAxiom(annotDomainClass, df.getBooleanOWLDatatype().asOWLClass());
-			//man.applyChange(new AddAxiom(owlOnt, equivAx));
 			OWLAxiom ax = df.getOWLAnnotationPropertyRangeAxiom(property, df.getBooleanOWLDatatype().getIRI());
 			man.applyChange(new AddAxiom(owlOnt, ax));
 		}
