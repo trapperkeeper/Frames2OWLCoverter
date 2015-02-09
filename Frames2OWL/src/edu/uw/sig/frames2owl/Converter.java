@@ -92,21 +92,10 @@ import edu.uw.sig.frames2owl.util.IRIUtils;
  */
 public class Converter
 {
-	//private String framesPPRJ;
-	//private String owlFile;
-	//String owlOutputDir;
-	//String owlOutputName;
-	//String owlIRIString;
 	private ConfigReader cReader;
-	
 	private String owlPath;
-	//IRI owlIRI;
 	private IRIUtils iriUtils;
 	private ConvUtils convUtils;
-	
-	//String iriFragSep;
-	//String iriValueComp;
-	//Slot iriValSlot;
 	
 	private KnowledgeBase framesKB;
 	private OWLOntology owlOnt;
@@ -117,8 +106,6 @@ public class Converter
 	private Boolean makeSiblingClsesDisj = false;
 	private Boolean createAnnotDomainRangeClses = false;
 	private Map<Slot,SlotValueConverter> slot2ConvMap = new HashMap<Slot,SlotValueConverter>();
-	//private Map<Cls,InstanceConverter> cls2InstConvMap = new HashMap<Cls,SlotValueConverter>();
-	//private SlotValueConverter defaultConverter;
 	
 	// additional reified sub-relationship exclusions
 	private Set<Slot> reifExclusions = new HashSet<Slot>();
@@ -128,13 +115,8 @@ public class Converter
 	private OWLClass rangeClass = null;
 	
 	public Converter(String framesPath, String owlPath, String owlUriString, String configPath)
-	{
-		//this.framesPPRJ = framesPath;
-		//this.owlFile = owlPath;	
+	{	
 		this.owlPath = owlPath;
-		
-		//String owlIRIString = owlUriString;
-		//this.owlIRI = IRI.create(owlUriString);
 		
 		boolean initSuccess = init(framesPath, owlUriString, configPath, null);
 		if(!initSuccess)
@@ -196,31 +178,6 @@ public class Converter
 		this.convUtils = new ConvUtils(iriUtils,df,framesKB);
 		
 		// handle import statements (for includes in frames)
-		//String owlIRIString = owlOnt.getOntologyID().getOntologyIRI().toString();
-		
-		/*
-		for(URI includedFileURI : (Collection<URI>)framesKB.getProject().getDirectIncludedProjectURIs())
-		{
-			// this block parses the name of the included ontology out of the include file path
-			// (that is the only place it is really represented)
-			String path = includedFileURI.getPath();
-			
-			int lastSlashInd = path.lastIndexOf('/');
-			//int lastPeriodInd = path.lastIndexOf('.');
-			//String fileName = path.substring(lastSlashInd+1, lastPeriodInd);
-			String fileName = path.substring(lastSlashInd+1);
-			
-			// create import statement
-			// construct IRI
-			IRI importIRI = IRI.create(fileName);
-			System.err.println("will gen import statement for "+importIRI);
-			
-			// insert import statement
-			OWLImportsDeclaration importDec = df.getOWLImportsDeclaration(importIRI);
-			man.applyChange(new AddImport(owlOnt,importDec));
-		}
-		*/
-		
 		String owlExt = ".owl";
 		for(URI includedFileURI : (Collection<URI>)framesKB.getProject().getDirectIncludedProjectURIs())
 		{
@@ -409,68 +366,6 @@ public class Converter
 			}
 		}
 		
-		/*
-		
-		// create default slot value converter
-		Class defaultConverterClass = cReader.getDefaultConv();
-		try
-		{
-			defaultConverter = (SlotValueConverter)defaultConverterClass.asSubclass(SlotValueConverter.class)
-					.getConstructor(KnowledgeBase.class,Slot.class,OWLOntology.class,IRIUtils.class)
-					.newInstance(framesKB,owlOnt,iriUtils);
-		}
-		catch (IllegalArgumentException e)
-		{
-			e.printStackTrace();
-		}
-		catch (SecurityException e)
-		{
-			e.printStackTrace();
-		}
-		catch (InstantiationException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IllegalAccessException e)
-		{
-			e.printStackTrace();
-		}
-		catch (InvocationTargetException e)
-		{
-			e.printStackTrace();
-		}
-		catch (NoSuchMethodException e)
-		{
-			e.printStackTrace();
-		}
-		*/
-				
-		/*
-		try
-		{
-			// create config reader
-			cReader = new ConfigReader("resource/config.xml");
-			
-			// read IRI config values
-			String iriSlotName = cReader.getIRIValueSourceSlot();
-			iriValSlot = framesKB.getSlot(iriSlotName);
-			if(iriValSlot==null)
-			{
-				System.err.println("IRI value slot is null");
-				return false;
-			}
-			
-			iriFragSep = cReader.getIRIFragSep();
-			iriValueComp = cReader.getIRIValueComp();
-			
-		}
-		catch (ConfigurationException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
-		*/
-		
 		return true;
 	}
 	
@@ -504,30 +399,6 @@ public class Converter
 		}
 	}
 	
-	/*
-	private IRI iriUtils.getIRIForFrame(Frame frame) throws IRIGenerationException
-	{
-		// make sure slot is present where IRI info resides
-		if(!frame.hasOwnSlot(iriValSlot))
-			throw new IRIGenerationException("could not generate IRI for frame "+frame.getBrowserText()+", IRI slot not found");
-		
-		// get value to construct IRI
-		String value = (String)frame.getOwnSlotValue(iriValSlot);
-		if(value==null)
-		{
-			throw new IRIGenerationException("could not generate IRI for frame "+frame.getBrowserText()+", no value in IRI slot");
-		}
-		
-		// construct IRI
-		String owlIRIString = owlOnt.getOntologyID().getOntologyIRI().toString();
-		String iriString = owlIRIString+iriFragSep+iriValueComp.replace("{value}", value);
-		IRI resultIRI = IRI.create(iriString);
-		
-		// return newly constructed IRI
-		return resultIRI;
-	}
-	*/
-	
 	private boolean createClses()
 	{
 		return createClses(null);
@@ -559,15 +430,7 @@ public class Converter
 		{
 			Cls thing = framesKB.getCls(":THING");
 			Collection<Cls> allSubs = thing.getDirectSubclasses();
-			/*
-			Collection<Cls> nonSysSubs = new ArrayList<Cls>();
-			for(Cls sub : allSubs)
-			{
-				if(!sub.isSystem())
-					nonSysSubs.add(sub);
-			}
-			rootClses = nonSysSubs;
-			*/
+
 			rootClses = allSubs;
 		}
 		else
@@ -633,7 +496,6 @@ public class Converter
 			}
 			
 			// create stub classes for child clses
-			//Collection<Cls> subs = rootCls.getDirectSubclasses();
 			isOK = isOK && createClses(rootCls);
 		}
 		
@@ -643,115 +505,6 @@ public class Converter
 		
 		return isOK;
 	}
-	
-	
-	//TODO: Root Classes are being ignored during this process
-	/*
-	private boolean createClses(Cls parentCls)
-	{		
-		// get the OWL class for parent
-		OWLClass owlParent = null;
-		try
-		{
-			if(parentCls!=null)
-			{
-				if(!parentCls.isSystem())
-					owlParent = df.getOWLClass(iriUtils.getIRIForFrame(parentCls));
-				else
-					owlParent = df.getOWLThing();
-			}
-		}
-		catch (IRIGenerationException e1)
-		{
-			// TODO: double check if this is how this exception should be handled
-			//e1.printStackTrace();
-			return false;
-		}
-		
-		Collection<Cls> rootClses = null;
-		if(parentCls == null)
-		{
-			Cls thing = framesKB.getCls(":THING");
-			Collection<Cls> allSubs = thing.getDirectSubclasses();
-			Collection<Cls> nonSysSubs = new ArrayList<Cls>();
-			for(Cls sub : allSubs)
-			{
-				if(!sub.isSystem())
-					nonSysSubs.add(sub);
-			}
-			rootClses = nonSysSubs;
-		}
-		else
-			rootClses = parentCls.getDirectSubclasses();
-		
-		if(rootClses==null)
-		{
-			return false;
-		}
-		
-		boolean isOK = true;
-		
-		Set<OWLClass> siblings = new HashSet<OWLClass>();
-		
-		for(Cls rootCls : rootClses)
-		{
-			// check to see if it is an included root
-			if(rootCls.isIncluded())
-				continue;
-			
-			OWLClass owlClass = null;
-			
-			if(!rootCls.isSystem())
-			{
-				// create OWL class for this Frames Cls
-				IRI clsIRI = null;
-				try
-				{
-					clsIRI = iriUtils.getIRIForFrame(rootCls);
-				}
-				catch (IRIGenerationException e)
-				{
-					System.err.println(e.getMessage());
-					continue;
-				}
-				if(clsIRI==null)
-					continue;
-				owlClass = df.getOWLClass(clsIRI);
-				
-				// add an rdfs label
-				addLabelForFrame(owlClass, rootCls);
-				
-				if(parentCls!=null)
-				{							
-					// Now create the subclass axiom
-					OWLAxiom axiom = df.getOWLSubClassOfAxiom(owlClass, owlParent);
-					
-					// add the subclass axiom to the ontology.
-					AddAxiom addAxiom = new AddAxiom(owlOnt, axiom);
-					
-					// We now use the manager to apply the change
-					man.applyChange(addAxiom);
-					
-					copySlotValues(rootCls,owlClass);
-					
-					convertInsts(rootCls,owlClass);
-					
-					// add class to sibling collection (to make disjoint later if needed)
-					siblings.add(owlClass);
-				}
-			}
-			
-			// create stub classes for child clses
-			//Collection<Cls> subs = rootCls.getDirectSubclasses();
-			isOK = isOK && createClses(rootCls);
-		}
-		
-		// if configured, make all sibling classes mutually disjoint
-		if(makeSiblingClsesDisj && siblings.size()>1)
-			makeDisjoint(siblings);
-		
-		return isOK;
-	}*/
 	
 	private boolean convertInsts(Cls rootCls, OWLClass owlClass)
 	{
@@ -816,18 +569,12 @@ public class Converter
 	
 	private void makeDisjoint(Set<OWLClass> siblings)
 	{
-		/*
-		if(siblings==null||siblings.isEmpty()||siblings.size()==1)
-		{
-			System.err.println("Attempt to create invalid sibling disjointness assertions for "+siblings);
-		}*/
 		OWLCompositeOntologyChange compChange = new MakeClassesMutuallyDisjoint(df,siblings,false,owlOnt);
 		List<OWLOntologyChange> changes = compChange.getChanges();
 		for(OWLOntologyChange change : changes)
 		{
 			man.applyChange(change); 
 		}
-		//System.err.println(compChange.getChanges());
 	}
 	
 	private void addLabelForFrame(OWLEntity owlEnt, Frame frame)
@@ -937,15 +684,6 @@ public class Converter
 	{
 		Converter conv = new Converter(args[0],args[1],args[2],args[3]);
 		conv.run();
-		
-		/*
-		for(Slot slot : (Collection<Slot>)conv.framesKB.getSlots())
-		{
-			if(!slot.isSystem())
-				System.err.println(slot.getName());
-		}
-		*/
-
 	}
 
 }
