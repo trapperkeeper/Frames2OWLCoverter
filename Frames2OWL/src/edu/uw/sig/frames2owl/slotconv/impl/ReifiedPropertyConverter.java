@@ -280,6 +280,7 @@ public class ReifiedPropertyConverter extends BaseReifiedPropertyConverter
 			
 			// Now set the subclass property
 			// get instance type
+			/** removed 11/03/2015 LTD, created unsatisfiable classes in the FMA
 			Cls type = val.getDirectType();
 			IRI typeIRI;
 			try
@@ -301,6 +302,7 @@ public class ReifiedPropertyConverter extends BaseReifiedPropertyConverter
 			
 			// We now use the manager to apply the change
 			man.applyChange(addAxiom);
+			*/
 		}
 		
 
